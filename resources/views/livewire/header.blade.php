@@ -37,18 +37,16 @@ use function Livewire\Volt\{state};
             <div>
                 <img class="h-14 w-auto" src="{{ asset('images/logo.png') }}">
             </div>
-            <div class="flex flex-1 justify-around font-medium text-lg">
-                <div>
+            <div class="flex flex-1 justify-center gap-14 font-medium text-lg">
+                <a href="/" wire:navigate>
                     Home
-                </div>
-                <div class="flex items-center gap-2">
-                    <div>
-                        Services
-                    </div>
-                </div>
-                <div>
+                </a>
+                <a href="/service" wire:navigate>
+                    Services
+                </a>
+                <a href="/about-us" wire:navigate>
                     About Us
-                </div>
+                </a>
                 <div>
                     Blog
                 </div>

@@ -7,25 +7,11 @@ use function Livewire\Volt\{state};
 ?>
 
 <div class="w-full flex flex-col items-center gap-12">
-    <div class="h-[50vh] w-full overflow-clip flex justify-end relative">
-        <img class="object-cover" src="{{ asset('images/service-cover-image.webp') }}">
-        <div class="absolute inset-0 bg-gradient-to-b from-white/70 to-primary/70 flex flex-col items-center">
-            <div class="w-4/5 flex gap-4 py-8 mt-auto">
-                <div class="border-2 border-accent"></div>
-                <div class="flex flex-col text-white">
-                    <div class="text-6xl uppercase tracking-wide font-semibold">Our Services</div>
-                    <div class="text-xl">Efficient Solutions for Maximum Results</div>
-                </div>
-            </div>
-            <div class="w-full bg-white/90 py-2 flex justify-center">
-                <div class="w-4/5 text-sm">Home >> Our Services</div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="w-4/5 flex flex-col gap-12">
+   <livewire:utility.bg-cover />
+    <div class="w-4/5 flex">
+        <div class="flex flex-col gap-12">
             <div class="flex flex-col gap-4">
-                <div class="text-primary text-xl font-semibold uppercase">Credit Risk Assessment</div>
+                <div class="text-primary text-2xl font-semibold uppercase">Credit Risk Assessment</div>
                 <div class="font-light">
                     <ul class="list-disc">
                         <li>
@@ -45,7 +31,7 @@ use function Livewire\Volt\{state};
             </div>
 
             <div class="flex flex-col gap-4">
-                <div class="text-primary text-xl font-semibold uppercase">Accounts Receivable Management</div>
+                <div class="text-primary text-2xl font-semibold uppercase">Accounts Receivable Management</div>
                 <div class="font-light">
                     <ul class="list-disc">
                         <li>
@@ -62,7 +48,7 @@ use function Livewire\Volt\{state};
             </div>
 
             <div class="flex flex-col gap-4">
-                <div class="text-primary text-xl font-semibold uppercase">Credit Policy Development and implementation</div>
+                <div class="text-primary text-2xl font-semibold uppercase">Credit Policy Development and implementation</div>
                 <div class="font-light">
                     <ul class="list-disc">
                         <li>
@@ -82,7 +68,7 @@ use function Livewire\Volt\{state};
             </div>
 
             <div class="flex flex-col gap-4">
-                <div class="text-primary text-xl font-semibold uppercase"> Debt Recovery & Collection - No collection, no commission</div>
+                <div class="text-primary text-2xl font-semibold uppercase"> Debt Recovery & Collection - No collection, no commission</div>
                 <div class="font-light">
                     <ul class="list-disc">
                         <li>
@@ -95,6 +81,17 @@ use function Livewire\Volt\{state};
                             Legal Remedies Consulting – Advising on legal options for overdue debts.
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="flex flex-col gap-4 sticky top-6">
+                <div class="uppercase text-2xl text-primary font-semibold">Services</div>
+                <div class="flex flex-col gap-2 *:bg-primary group *:text-white *:py-2 *:px-4 *:hover:bg-white *:hover:text-primary *:cursor-pointer *:transition-colors">
+                    <div>Risk Assessment</div>
+                    <div>Accounts Receivable Management</div>
+                    <div>Credit Policy Development and implementation</div>
+                    <div>Debt Recovery & Collection - No collection, no commission</div>
                 </div>
             </div>
         </div>

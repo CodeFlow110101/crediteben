@@ -7,4 +7,6 @@ use Livewire\Volt\Volt;
 //     return view('welcome');
 // });
 
-Volt::route('/', 'main');
+Volt::route('/', 'main')->name('home');
+Volt::route('/service', 'main')->name('service');
+Volt::route('/about-us', 'main')->name('about-us');
