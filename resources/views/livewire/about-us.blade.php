@@ -90,4 +90,20 @@ use function Livewire\Volt\{state};
             <div :class="show == 2 ? 'bg-primary' : 'bg-black/20'" @click="show=2;"></div>
         </div>
     </div>
+    <div class="flex justify-end relative overflow-clip">
+        <div class="absolute -z-50">
+            <img src="{{ asset('images/about-us-bg.webp') }}">
+        </div>
+        <div class="w-3/5 flex flex-col gap-5 text-white bg-primary/75 py-48 px-10">
+            <div class="text-5xl font-semibold capitalize">
+                Why partner with BCS?
+            </div>
+            <div>
+                BCS can demonstrate a proven track record in collecting consumer and commercial debt for clients of all sizes. We customize a solution for you that will recover your funds as quickly as possible.
+            </div>
+            <div>
+                No matter the size of the file, or the industry sector, we are here for you.
+            </div>
+        </div>
+    </div>
 </div>
