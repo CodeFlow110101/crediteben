@@ -1,8 +1,11 @@
 <?php
 
-use function Livewire\Volt\{state};
+use App\Models\Blog;
 
-//
+use function Livewire\Volt\{state, with};
+
+with(fn() => ['blogs' => Blog::get()]);
+
 
 ?>
 
@@ -23,14 +26,14 @@ use function Livewire\Volt\{state};
                     30+ years of providing <span class="font-semibold">debt collection services in Calgary</span> and across Canada, and we continue to get our clients paid.
                 </div>
                 <div>
-                    <button class="flex gap-2 items-center uppercase group font-medium text-lg tracking-wide text-white bg-black hover:bg-accent hover:text-black w-min whitespace-nowrap py-3 px-8 rounded-lg *:transition-all transition-all hover:scale-125">
+                    <a href="/contact-us" wire:navigate class="flex gap-2 items-center uppercase group font-medium text-lg tracking-wide text-white bg-black hover:bg-accent hover:text-black w-min whitespace-nowrap py-3 px-8 rounded-lg *:transition-all transition-all hover:scale-125">
                         <div>Start Collecting now</div>
                         <div class="border border-white group-hover:border-black rounded-full flex justify-center items-center *:size-5 *:text-white group-hover:*:text-black *:transition-all">
                             <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 12H5m14 0-4 4m4-4-4-4" />
                             </svg>
                         </div>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -109,14 +112,14 @@ use function Livewire\Volt\{state};
                         With a strong commitment to professionalism, compliance, and customer satisfaction, Bison Credit Solutions is your premier choice for debt recovery services. Our tailored solutions, backed by industry expertise and cutting-edge technology, ensure optimal results and maximum recovery rates for our clients. Contact us today to discuss your debt recovery needs and let us help you get back on track.
                     </div>
                     <div>
-                        <button class="bg-primary flex items-center rounded-lg text-white py-2 px-6 gap-4 uppercase font-medium cursor-pointer transition-all hover:scale-110">
+                        <a href="/about-us" wire:navigate class="bg-primary w-min whitespace-nowrap flex items-center rounded-lg text-white py-2 px-6 gap-4 uppercase font-medium cursor-pointer transition-all hover:scale-110">
                             <div>explore more</div>
                             <div class="border-2 border-white rounded-full">
                                 <svg class="size-3.5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M19 12H5m14 0-4 4m4-4-4-4" />
                                 </svg>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="w-0 border-r border-black/20"></div>
@@ -160,6 +163,26 @@ use function Livewire\Volt\{state};
             </div>
             <div class="font-semibold text-4xl">
                 Insights & Articles
+            </div>
+            <div class="grid grid-cols-3 gap-6 w-4/5 mx-auto py-12">
+                @foreach($blogs as $blog)
+                <div class="flex flex-col gap-2 shadow border border-black/5">
+                    <div>
+                        <img src="{{ asset('storage/'.$blog->image) }}">
+                    </div>
+                    <div class="py-4 px-4 flex flex-col gap-2 grow">
+                        <div class="text-primary text-xl">
+                            {{ $blog->title }}
+                        </div>
+                        <div class="text-lg">
+                            {{ Str::of($blog->description)->stripTags()->limit(30) }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="/" wire:navigate class="text-primary text-sm font-medium">read more</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>
