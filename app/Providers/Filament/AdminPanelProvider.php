@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->spa()
             ->brandLogo(asset('images/logo.png'))
+            ->favicon(asset('images/logo-2.png'))
             ->when(request()->path() == 'admin/login', fn($panel) => $panel->brandLogoHeight('4rem'), fn($panel) => $panel->brandLogoHeight('3rem'))
             ->darkMode(false)
             ->colors([
