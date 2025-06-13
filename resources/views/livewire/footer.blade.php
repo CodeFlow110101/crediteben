@@ -7,12 +7,12 @@ state(['name', 'email', 'message']);
 
 rules(['name' => 'required', 'email' => 'required', 'message' => 'required']);
 
-$submit = function () {
-};
+$submit = function () {};
 
 ?>
 
 <div class="pt-16 flex flex-col gap-16 bg-white">
+    @if(request()->path() != 'contact-us')
     <div class="flex justify-center">
         <div class="w-4/5 flex rounded-r-3xl overflow-clip justify-end relative">
             <img src="{{ asset('images/footer-bg-image.webp') }}" class="absolute inset-0 z-0">
@@ -46,6 +46,7 @@ $submit = function () {
             </div>
         </div>
     </div>
+    @endif
     <div class="flex flex-col gap-8">
         <div class="w-4/5 mx-auto flex justify-around">
             <div class="flex flex-col gap-2">
@@ -70,11 +71,11 @@ $submit = function () {
             <div class="flex flex-col gap-2">
                 <div class="uppercase text-2xl font-semibold">Comapny</div>
                 <div class="flex flex-col gap-2 *:hover:text-accent *:transition-colors text-lg">
-                    <div>Home</div>
-                    <div>Services</div>
-                    <div>About Us</div>
-                    <div>Blog</div>
-                    <div>Get started</div>
+                    <a href="/" wire:navigate>Home</a>
+                    <a href="/services" wire:navigate>Services</a>
+                    <a href="/about-us" wire:navigate>About Us</a>
+                    <a href="/blog" wire:navigate>Blog</a>
+                    <a href="/contact-us" wire:navigate>Get started</a>
                 </div>
             </div>
         </div>

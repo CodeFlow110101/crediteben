@@ -12,3 +12,5 @@ use Livewire\Volt\Volt;
 Volt::route('/', 'main')->name('home');
 Volt::route('/service', 'main')->name('service');
 Volt::route('/about-us', 'main')->name('about-us');
+Volt::route('/contact-us', 'main')->name('contact-us');
+Volt::route('/blog', 'main')->name('blog');

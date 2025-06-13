@@ -15,6 +15,10 @@ mount(function () {
     <img class="object-cover" src="{{ asset('images/service-cover-image.webp') }}">
     @elseif($path == 'about-us')
     <img class="object-cover" src="{{ asset('images/home-bg.webp') }}">
+    @elseif($path == 'contact-us')
+    <img class="object-cover" src="{{ asset('images/contact-us-cover.webp') }}">
+    @elseif($path == 'blog')
+    <img class="object-cover object-bottom" src="{{ asset('images/blog-cover.webp') }}">
     @endif
     <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-primary/90 flex flex-col items-center">
         <div class="w-4/5 flex gap-4 py-8 mt-auto">
@@ -25,6 +29,10 @@ mount(function () {
                     Our Services
                     @elseif($path == 'about-us')
                     about us
+                    @elseif($path == 'contact-us')
+                    contact us
+                    @elseif($path == 'blog')
+                    blog
                     @endif
                 </div>
                 <div class="text-xl font-light">
@@ -32,6 +40,10 @@ mount(function () {
                     Efficient Solutions for Maximum Results
                     @elseif($path == 'about-us')
                     We have been collecting since 1992.
+                    @elseif($path == 'contact-us')
+                    We would love to hear from you.
+                    @elseif($path == 'blog')
+                    Stay Updated.
                     @endif
                 </div>
             </div>
@@ -42,6 +54,10 @@ mount(function () {
                 Our Services
                 @elseif($path == 'about-us')
                 about us
+                @elseif($path == 'contact-us')
+                contact us
+                @elseif($path == 'blog')
+                blog
                 @endif
             </div>
         </div>

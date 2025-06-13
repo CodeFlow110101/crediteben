@@ -47,14 +47,14 @@ use function Livewire\Volt\{state};
                 <a href="/about-us" wire:navigate>
                     About Us
                 </a>
-                <div>
+                <a href="/blog" wire:navigate>
                     Blog
-                </div>
+                </a>
             </div>
             <div>
-                <button class="bg-primary py-3 px-6 rounded-lg text-white uppercase font-medium tracking-wide">
+                <a href="/contact-us" wire:navigate class="bg-primary py-3 px-6 rounded-lg text-white uppercase font-medium tracking-wide hover:bg-accent hover:text-black transition-all">
                     Get Started
-                </button>
+                </a>
             </div>
         </div>
     </div>
