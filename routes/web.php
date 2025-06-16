@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\BlogValidation;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -14,3 +15,4 @@ Volt::route('/service', 'main')->name('service');
 Volt::route('/about-us', 'main')->name('about-us');
 Volt::route('/contact-us', 'main')->name('contact-us');
 Volt::route('/blog', 'main')->name('blog');
+Volt::route('/{title}', 'main')->name('blog-dynamic')->middleware(BlogValidation::class);

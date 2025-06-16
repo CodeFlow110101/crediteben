@@ -5,13 +5,13 @@ use function Livewire\Volt\{state, mount};
 state('path');
 
 mount(function () {
-    $this->path = request()->path();
+    $this->path = request()->route()->getName();
 });
 ?>
 
 <div>
     <livewire:header />
-    @if($path == '/')
+    @if($path == 'home')
     <livewire:home />
     @elseif($path == 'service')
     <livewire:service />
@@ -21,6 +21,8 @@ mount(function () {
     <livewire:contact-us />
     @elseif($path == 'blog')
     <livewire:blog />
+    @elseif($path == 'blog-dynamic')
+    <livewire:blog-dynamic />
     @endif
     <livewire:footer />
 </div>

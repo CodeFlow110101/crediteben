@@ -5,7 +5,10 @@ use App\Models\Blog;
 use function Livewire\Volt\{state, with};
 use Illuminate\Support\Str;
 
-with(fn() => ['blogs' => Blog::get()]);
+with(fn() => ['blogs' => Blog::get()->map(function ($blog) {
+    $blog->url = Str::of($blog->title)->lower()->replace(' ', '')->toString();
+    return $blog;
+})]);
 
 ?>
 
@@ -25,7 +28,7 @@ with(fn() => ['blogs' => Blog::get()]);
                     {{ Str::of($blog->description)->stripTags()->limit(30) }}
                 </div>
                 <div class="mt-auto">
-                    <a href="/" wire:navigate class="text-primary text-sm font-medium">read more</a>
+                    <a href="/{{ $blog->url }}" wire:navigate class="text-primary text-sm font-medium">read more</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ use function Livewire\Volt\{state, mount};
 state('path');
 
 mount(function () {
-    $this->path = request()->path();
+    $this->path = request()->route()->getName();
 });
 
 ?>
@@ -17,7 +17,7 @@ mount(function () {
     <img class="object-cover" src="{{ asset('images/home-bg.webp') }}">
     @elseif($path == 'contact-us')
     <img class="object-cover" src="{{ asset('images/contact-us-cover.webp') }}">
-    @elseif($path == 'blog')
+    @elseif($path == 'blog' || $path == 'blog-dynamic')
     <img class="object-cover object-bottom" src="{{ asset('images/blog-cover.webp') }}">
     @endif
     <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-primary/90 flex flex-col items-center">
@@ -31,7 +31,7 @@ mount(function () {
                     about us
                     @elseif($path == 'contact-us')
                     contact us
-                    @elseif($path == 'blog')
+                    @elseif($path == 'blog' || $path == 'blog-dynamic')
                     blog
                     @endif
                 </div>
@@ -42,7 +42,7 @@ mount(function () {
                     We have been collecting since 1992.
                     @elseif($path == 'contact-us')
                     We would love to hear from you.
-                    @elseif($path == 'blog')
+                    @elseif($path == 'blog' || $path == 'blog-dynamic')
                     Stay Updated.
                     @endif
                 </div>
@@ -56,7 +56,7 @@ mount(function () {
                 about us
                 @elseif($path == 'contact-us')
                 contact us
-                @elseif($path == 'blog')
+                @elseif($path == 'blog' || $path == 'blog-dynamic')
                 blog
                 @endif
             </div>
