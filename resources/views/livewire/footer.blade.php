@@ -1,14 +1,19 @@
 <?php
 
-use function Livewire\Volt\{rules, state};
+use function Livewire\Volt\{rules, state, with};
 
 use App\Mail\FooterForm;
-use Carbon\Carbon;
+use App\Models\Footer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\App;
 
 state(['name', 'email', 'message', 'showThankYouMessage']);
 
 rules(['name' => 'required', 'email' => 'required|email', 'message' => 'required']);
+
+with(fn() => [
+    'footer' => Footer::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+]);
 
 $submit = function () {
     $this->validate();
@@ -28,8 +33,8 @@ $submit = function () {
             <div class="w-1/2 bg-primary flex justify-center py-12 relative z-10">
                 <form wire:submit.prevent="submit" class="w-4/5 text-white flex flex-col gap-8">
                     <div class="flex flex-col gap-3">
-                        <div class="text-3xl">Have Questions? Contact Us</div>
-                        <div class="font-light">For any problems or questions, feel free to reach out to us by filling up the form below.</div>
+                        <div class="text-3xl">{!! $footer['form-heading'] !!}</div>
+                        <div class="font-light">{!! $footer['form-subheading'] !!}</div>
                     </div>
                     <div>
                         <input wire:model="name" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2 " placeholder="Name">
@@ -64,7 +69,7 @@ $submit = function () {
                         </div>
                     </button>
                     @if($showThankYouMessage)
-                    <div class="text-xl">Thank you for contacting us, We will be in touch shortly!</div>
+                    <div class="text-xl">{!! $footer['form-success-message'] !!}</div>
                     @endif
                 </form>
             </div>
@@ -127,6 +132,6 @@ $submit = function () {
                 </div>
             </div>
         </div>
-        <div class="bg-primary w-4/5 rounded-t-full mx-auto text-center text-white py-2">Copyright © {{ Carbon::now()->year }} CreditEben Solutions</div>
+        <div class="bg-primary w-4/5 rounded-t-full mx-auto text-center text-white py-2">{!! $footer['copyright-statement'] !!}</div>
     </div>
 </div>

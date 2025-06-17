@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\ServicePageResource\Pages;
+use App\Filament\Resources\ServicePageResource\RelationManagers;
+use App\Models\ServicePage;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,15 +14,14 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\RichEditor;
 
-class HomeResource extends Resource
+class ServicePageResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = ServicePage::class;
 
-    protected static ?string $modelLabel = 'Home';
+    protected static ?string $modelLabel = 'Service';
 
-    protected static ?string $pluralModelLabel = 'Home';
+    protected static ?string $pluralModelLabel = 'Service';
 
     protected static ?string $navigationGroup = 'Content';
 
@@ -57,9 +57,9 @@ class HomeResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -73,9 +73,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListServicePages::route('/'),
+            'create' => Pages\CreateServicePage::route('/create'),
+            'edit' => Pages\EditServicePage::route('/{record}/edit'),
         ];
     }
 }

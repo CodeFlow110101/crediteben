@@ -1,21 +1,26 @@
 <?php
 
 use App\Mail\ContactForm;
+use App\Models\ContactUs;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\App;
 use function Livewire\Volt\{state, with, rules};
 
 state(['first_name', 'last_name', 'phone_no', 'email', 'company_name', 'job_title', 'subject', 'message', 'showThankYouMessage']);
 
 rules(['first_name' => 'required', 'email' => 'required|email', 'message' => 'required']);
 
-with(fn() => ['options' => collect([
-    'Which of these best describe you?',
-    'My company needs to collect debt',
-    'I work at a bank or other financial institution',
-    'I work for a telecommunications company',
-    'I work for an accounting firm',
-    'I have a question about my personal debt'
-])]);
+with(fn() => [
+    'options' => collect([
+        'Which of these best describe you?',
+        'My company needs to collect debt',
+        'I work at a bank or other financial institution',
+        'I work for a telecommunications company',
+        'I work for an accounting firm',
+        'I have a question about my personal debt'
+    ]),
+    'content' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en])
+]);
 
 $submit = function () {
     $this->validate();
@@ -32,13 +37,13 @@ $submit = function () {
     <div class="w-4/5 mx-auto flex *:flex-1 gap-8 py-12">
         <div class="flex flex-col gap-3">
             <div class="text-primary text-2xl">
-                NEED TO COLLECT?
+                {!! $content['section-1-heading'] !!}
             </div>
             <div class="uppercase text-4xl font-semibold">
-                get in touch with us
+                {!! $content['section-1-subheading'] !!}
             </div>
             <div class="font-light leading-tight">
-                Contact us for a free consultation, new inquires, or to let us know how we are doing. We look forward to hearing from you. A representative will reply within 24 hours.
+                {!! $content['section-1-description'] !!}
             </div>
             <div class="flex flex-col gap-2">
                 <div class="flex gap-2 items-center">
@@ -132,7 +137,7 @@ $submit = function () {
                 </div>
                 <div>
                     @if($showThankYouMessage)
-                    <div class="text-xl">Thank you for contacting us, We will be in touch shortly!</div>
+                    <div class="text-xl"> {!! $content['form-after-submit-message'] !!}</div>
                     @endif
                 </div>
             </form>

@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\AboutUsResource\Pages;
+use App\Filament\Resources\AboutUsResource\RelationManagers;
+use App\Models\AboutUs;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,19 +14,18 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\RichEditor;
 
-class HomeResource extends Resource
+class AboutUsResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = AboutUs::class;
 
-    protected static ?string $modelLabel = 'Home';
+    protected static ?string $modelLabel = 'About Us';
 
-    protected static ?string $pluralModelLabel = 'Home';
-
-    protected static ?string $navigationGroup = 'Content';
+    protected static ?string $pluralModelLabel = 'About Us';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Content';
 
     public static function form(Form $form): Form
     {
@@ -57,9 +57,9 @@ class HomeResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -73,9 +73,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListAboutUs::route('/'),
+            'create' => Pages\CreateAboutUs::route('/create'),
+            'edit' => Pages\EditAboutUs::route('/{record}/edit'),
         ];
     }
 }

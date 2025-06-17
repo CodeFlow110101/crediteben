@@ -2,12 +2,13 @@
 
 use App\Models\Blog;
 use App\Models\Home;
+use Illuminate\Support\Facades\App;
 
 use function Livewire\Volt\{state, with};
 
 with(fn() => [
     'blogs' => Blog::get(),
-    'content' => Home::get()->mapWithKeys(fn($content) => [$content->key => $content->en]),
+    'content' => Home::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
 ]);
 
 

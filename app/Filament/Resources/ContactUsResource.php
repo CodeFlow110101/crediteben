@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\ContactUsResource\Pages;
+use App\Filament\Resources\ContactUsResource\RelationManagers;
+use App\Models\ContactUs;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,15 +14,14 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\RichEditor;
 
-class HomeResource extends Resource
+class ContactUsResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = ContactUs::class;
 
-    protected static ?string $modelLabel = 'Home';
+    protected static ?string $modelLabel = 'Contact Us';
 
-    protected static ?string $pluralModelLabel = 'Home';
+    protected static ?string $pluralModelLabel = 'Contact Us';
 
     protected static ?string $navigationGroup = 'Content';
 
@@ -57,9 +57,9 @@ class HomeResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -73,9 +73,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListContactUs::route('/'),
+            'create' => Pages\CreateContactUs::route('/create'),
+            'edit' => Pages\EditContactUs::route('/{record}/edit'),
         ];
     }
 }

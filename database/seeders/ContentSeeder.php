@@ -2,7 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\AboutUs;
+use App\Models\BlogPage;
+use App\Models\ContactUs;
+use App\Models\Footer;
 use App\Models\Home;
+use App\Models\ServicePage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -171,6 +176,201 @@ class ContentSeeder extends Seeder
             ],
         ];
 
+        $aboutus = [
+            [
+                "key" => "cover-heading-1",
+                "en" => "about us",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-subheading-1",
+                "en" => "We have been collecting since 1992.",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-breadcrumb-1",
+                "en" => "about us",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-heading",
+                "en" => "Get to know us",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-subheading",
+                "en" => "Who We are",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-description",
+                "en" => "Bison Credit Solutions is a third-party collection agency, based in Calgary Alberta. We provide a full range of collection, litigation, and accounts receivable management services. Bison Credit Solutions manages debt recovery and third-party collection needs for consumer and commercial accounts. No matter the size of the file or the industry sector, our experienced team, sophisticated strategies, and cutting-edge technology, ensures our customer’s satisfaction.",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-1-heading",
+                "en" => "Our mission",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-1-subheading",
+                "en" => "To aid in the retrieval of overdue receivables, using proven strategies, in a timely manner.",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-2-heading",
+                "en" => "Our Values",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-2-subheading",
+                "en" => "The core values of BCS embrace integrity and trust, knowledge and professionalism as well as respect and reliability.",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-3-heading",
+                "en" => "Our Process",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-2-tab-3-subheading",
+                "en" => "Our process has been built on 30 years of tried-and-true practices. We operate from a central collection management call centre, equipped with experienced collectors and in-house legal expertise.",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-3-heading",
+                "en" => "What clients say about us",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-3-quote-1",
+                "en" => "“With the help of BCS, we have streamlined our system so that we work files ourselves and then send accounts at a specific point to their office. Bison works all files diligently, whether a $50 unpaid bill or a $6,000 commercial file. We also find them quick to respond to our requests and ready to provide collection status reports when required.”",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-3-quote-2",
+                "en" => "“We have been pleased with the work that Bison Credit Solutions has performed for many years since becoming our 3rd party collection agency. Bison has successfully collected both large and small accounts in Calgary and well beyond city boundaries. BCS has also executed many successful court actions for our firm.”",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-4-heading",
+                "en" => "Why partner with BCS?",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-4-subheading-1",
+                "en" => "BCS can demonstrate a proven track record in collecting consumer and commercial debt for clients of all sizes. We customize a solution for you that will recover your funds as quickly as possible.",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-4-subheading-2",
+                "en" => "No matter the size of the file, or the industry sector, we are here for you.",
+                "fr" => ""
+            ],
+        ];
+
+        $contactus = [
+            [
+                "key" => "cover-heading-1",
+                "en" => "contact us",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-subheading-1",
+                "en" => "We would love to hear from you.",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-breadcrumb-1",
+                "en" => "contact us",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-heading",
+                "en" => "NEED TO COLLECT?",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-subheading",
+                "en" => "get in touch with us",
+                "fr" => ""
+            ],
+            [
+                "key" => "section-1-description",
+                "en" => "get in touch with us",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-after-submit-message",
+                "en" => "Thank you for contacting us, We will be in touch shortly!",
+                "fr" => ""
+            ]
+        ];
+
+        $service = [
+            [
+                "key" => "cover-heading-1",
+                "en" => "Our Services",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-subheading-1",
+                "en" => "Efficient Solutions for Maximum Results",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-breadcrumb-1",
+                "en" => "Our Services",
+                "fr" => ""
+            ]
+        ];
+
+        $blog = [
+            [
+                "key" => "cover-heading-1",
+                "en" => "blog",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-subheading-1",
+                "en" => "Stay Updated.",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-breadcrumb-1",
+                "en" => "blog",
+                "fr" => ""
+            ]
+        ];
+
+        $footer = [
+            [
+                "key" => "form-heading",
+                "en" => "Have Questions? Contact Us",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subheading",
+                "en" => "Have Questions? Contact Us",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-success-message",
+                "en" => "Thank you for contacting us, We will be in touch shortly!",
+                "fr" => ""
+            ],
+            [
+                "key" => "copyright-statement",
+                "en" => "Copyright © 2025 CreditEben Solutions",
+                "fr" => ""
+            ]
+        ];
+
         collect($home)->each(fn($content) => Home::updateOrCreate(['key' => $content['key']], $content));
+        collect($aboutus)->each(fn($content) => AboutUs::updateOrCreate(['key' => $content['key']], $content));
+        collect($contactus)->each(fn($content) => ContactUs::updateOrCreate(['key' => $content['key']], $content));
+        collect($service)->each(fn($content) => ServicePage::updateOrCreate(['key' => $content['key']], $content));
+        collect($blog)->each(fn($content) => BlogPage::updateOrCreate(['key' => $content['key']], $content));
+        collect($footer)->each(fn($content) => Footer::updateOrCreate(['key' => $content['key']], $content));
     }
 }

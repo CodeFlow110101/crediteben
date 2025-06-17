@@ -1,8 +1,22 @@
 <?php
 
-use function Livewire\Volt\{state, mount};
+use App\Models\AboutUs;
+use App\Models\BlogPage;
+use App\Models\ContactUs;
+use App\Models\ServicePage;
+use Illuminate\Support\Facades\App;
+
+use function Livewire\Volt\{state, mount, with};
 
 state('path');
+
+with(fn() => [
+    'aboutus' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'contactus' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'service' => ServicePage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'blog' => BlogPage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+]);
+
 
 mount(function () {
     $this->path = request()->route()->getName();
@@ -26,24 +40,24 @@ mount(function () {
             <div class="flex flex-col text-white">
                 <div class="text-6xl uppercase tracking-wide font-semibold">
                     @if($path == 'service')
-                    Our Services
+                    {!! $service['cover-heading-1'] !!}
                     @elseif($path == 'about-us')
-                    about us
+                    {!! $aboutus['cover-heading-1'] !!}
                     @elseif($path == 'contact-us')
-                    contact us
+                    {!! $contactus['cover-heading-1'] !!}
                     @elseif($path == 'blog' || $path == 'blog-dynamic')
-                    blog
+                    {!! $blog['cover-heading-1'] !!}
                     @endif
                 </div>
                 <div class="text-xl font-light">
                     @if($path == 'service')
-                    Efficient Solutions for Maximum Results
+                    {!! $service['cover-subheading-1'] !!}
                     @elseif($path == 'about-us')
-                    We have been collecting since 1992.
+                    {!! $aboutus['cover-subheading-1'] !!}
                     @elseif($path == 'contact-us')
-                    We would love to hear from you.
+                    {!! $contactus['cover-subheading-1'] !!}
                     @elseif($path == 'blog' || $path == 'blog-dynamic')
-                    Stay Updated.
+                    {!! $blog['cover-subheading-1'] !!}
                     @endif
                 </div>
             </div>
@@ -51,13 +65,13 @@ mount(function () {
         <div class="w-full bg-white/90 py-2 flex justify-center">
             <div class="w-4/5 text-sm capitalize">Home >>
                 @if($path == 'service')
-                Our Services
+                {!! $service['cover-breadcrumb-1'] !!}
                 @elseif($path == 'about-us')
-                about us
+                {!! $aboutus['cover-breadcrumb-1'] !!}
                 @elseif($path == 'contact-us')
-                contact us
+                {!! $contactus['cover-breadcrumb-1'] !!}
                 @elseif($path == 'blog' || $path == 'blog-dynamic')
-                blog
+                {!! $blog['cover-breadcrumb-1'] !!}
                 @endif
             </div>
         </div>
