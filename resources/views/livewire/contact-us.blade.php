@@ -2,6 +2,7 @@
 
 use App\Mail\ContactForm;
 use App\Models\ContactUs;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
 use function Livewire\Volt\{state, with, rules};
@@ -19,7 +20,9 @@ with(fn() => [
         'I work for an accounting firm',
         'I have a question about my personal debt'
     ]),
-    'content' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en])
+    'content' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'phone' => Setting::where('name', 'phone')->first()->value,
+    'emailId' => Setting::where('name', 'email')->first()->value,
 ]);
 
 $submit = function () {
@@ -52,7 +55,7 @@ $submit = function () {
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
                         </svg>
                     </div>
-                    <div>contact@crediteben.com</div>
+                    <div>{{ $emailId }}</div>
                 </div>
                 <div class="flex gap-2 items-center">
                     <div>
@@ -60,7 +63,7 @@ $submit = function () {
                             <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z" />
                         </svg>
                     </div>
-                    <div>587-332-3292</div>
+                    <div>{{ $phone }}</div>
                 </div>
             </div>
         </div>

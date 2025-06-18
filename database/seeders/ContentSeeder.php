@@ -8,6 +8,7 @@ use App\Models\ContactUs;
 use App\Models\Footer;
 use App\Models\Home;
 use App\Models\ServicePage;
+use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -366,11 +367,23 @@ class ContentSeeder extends Seeder
             ]
         ];
 
+        $setting = [
+            [
+                "name" => "phone",
+                "value" => "",
+            ],
+            [
+                "name" => "email",
+                "value" => "",
+            ]
+        ];
+
         collect($home)->each(fn($content) => Home::updateOrCreate(['key' => $content['key']], $content));
         collect($aboutus)->each(fn($content) => AboutUs::updateOrCreate(['key' => $content['key']], $content));
         collect($contactus)->each(fn($content) => ContactUs::updateOrCreate(['key' => $content['key']], $content));
         collect($service)->each(fn($content) => ServicePage::updateOrCreate(['key' => $content['key']], $content));
         collect($blog)->each(fn($content) => BlogPage::updateOrCreate(['key' => $content['key']], $content));
         collect($footer)->each(fn($content) => Footer::updateOrCreate(['key' => $content['key']], $content));
+        collect($setting)->each(fn($content) => Setting::updateOrCreate(['name' => $content['name']], $content));
     }
 }

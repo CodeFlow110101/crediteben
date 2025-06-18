@@ -1,11 +1,15 @@
 <?php
 
 use App\Models\AboutUs;
+use App\Models\Services;
 use Illuminate\Support\Facades\App;
 
 use function Livewire\Volt\{state, with};
 
-with(fn() => ['content' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en])]);
+with(fn() => [
+    'content' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'services' => Services::get()->mapWithKeys(fn($service) => [App::isLocale('fr') ? $service->title_fr : $service->title => App::isLocale('fr') ? $service->description_fr : $service->description]),
+]);
 
 ?>
 
@@ -19,18 +23,9 @@ with(fn() => ['content' => AboutUs::get()->mapWithKeys(fn($content) => [$content
                 {!! $content['section-1-description'] !!}
             </div>
             <div class="flex flex-col text-xl font-semibold underline gap-3 tracking-wide">
-                <div>
-                    Credit Risk Assessment
-                </div>
-                <div>
-                    Accounts Receivable Management
-                </div>
-                <div>
-                    Credit Policy Development and implementation
-                </div>
-                <div>
-                    Debt Recovery & Collection - No collection, no commission
-                </div>
+                @foreach($services as $title => $description)
+                <div>{!! $title !!}</div>
+                @endforeach
             </div>
         </div>
         <div>
@@ -81,7 +76,7 @@ with(fn() => ['content' => AboutUs::get()->mapWithKeys(fn($content) => [$content
         </div>
     </div>
     <div x-data="{ show: 1 }" class="flex flex-col gap-8 py-12 text-center">
-        <div class="text-4xl font-semibold capitalize">{!! $content['section-2-tab-3-subheading'] !!}</div>
+        <div class="text-4xl font-semibold capitalize">{!! $content['section-3-heading'] !!}</div>
         <div x-show="show == 1" class="w-4/5 mx-auto italic">
             {!! $content['section-3-quote-1'] !!}
         </div>
