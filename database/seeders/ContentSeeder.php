@@ -375,6 +375,18 @@ class ContentSeeder extends Seeder
             [
                 "name" => "email",
                 "value" => "",
+            ],
+            [
+                "name" => "facebook",
+                "value" => "",
+            ],
+            [
+                "name" => "twitter",
+                "value" => "",
+            ],
+            [
+                "name" => "linkedin",
+                "value" => "",
             ]
         ];
 

@@ -11,14 +11,14 @@ with(fn() => [
 
 ?>
 
-<div class="w-full flex flex-col items-center gap-12">
+<div class="w-full flex flex-col items-center gap-12 max-xl:pb-12">
     <livewire:utility.bg-cover />
-    <div class="w-4/5 flex gap-10">
+    <div class="w-11/12 xl:w-4/5 flex max-xl:flex-col gap-10">
         <div class="flex flex-col gap-12 flex-1">
             @foreach($services as $title => $description)
             <div class="flex flex-col gap-4">
                 <div class="text-primary text-2xl font-semibold uppercase">{!! $title !!}</div>
-                <div class="font-light">
+                <div class="font-light max-xl:text-sm">
                     {!! $description !!}
                 </div>
             </div>

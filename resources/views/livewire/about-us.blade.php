@@ -15,14 +15,14 @@ with(fn() => [
 
 <div class="w-full flex flex-col items-center gap-12">
     <livewire:utility.bg-cover />
-    <div class="flex w-4/5 mx-auto *:flex-1 gap-12 py-12">
+    <div class="flex max-xl:flex-col w-11/12 xl:w-4/5 mx-auto *:flex-1 gap-2 xl:gap-12 xl:py-12">
         <div class="flex flex-col gap-4 py-12">
-            <div class="uppercase text-primary text-2xl tracking-wider font-medium">{{ $content['section-1-heading'] }}</div>
-            <div class="text-5xl font-semibold">{!! $content['section-1-subheading'] !!}</div>
+            <div class="uppercase text-primary text-xl xl:text-2xl tracking-wider font-medium">{{ $content['section-1-heading'] }}</div>
+            <div class="text-3xl xl:text-5xl font-semibold">{!! $content['section-1-subheading'] !!}</div>
             <div>
                 {!! $content['section-1-description'] !!}
             </div>
-            <div class="flex flex-col text-xl font-semibold underline gap-3 tracking-wide">
+            <div class="flex flex-col xl:text-xl font-semibold underline gap-3 tracking-wide">
                 @foreach($services as $title => $description)
                 <div>{!! $title !!}</div>
                 @endforeach
@@ -33,7 +33,7 @@ with(fn() => [
         </div>
     </div>
     <div class="bg-primary py-12">
-        <div class="*:bg-white flex gap-4 w-4/5 mx-auto *:flex-1 *:pb-20 *:pt-8 *:px-8">
+        <div class="*:bg-white flex max-xl:flex-col gap-4 w-4/5 mx-auto *:flex-1 *:pb-8 xl:*:pb-20 *:pt-8 *:px-8">
             <div class="flex flex-col gap-6 text-center">
                 <div class="text-primary flex flex-col gap-1 text-2xl font-medium">
                     <div class="flex justify-center">
@@ -43,7 +43,7 @@ with(fn() => [
                     </div>
                     <div>{!! $content['section-2-tab-1-heading'] !!}</div>
                 </div>
-                <div class="font-light">
+                <div class="font-light max-xl:text-sm">
                     {!! $content['section-2-tab-1-subheading'] !!}
                 </div>
             </div>
@@ -56,7 +56,7 @@ with(fn() => [
                     </div>
                     <div>{!! $content['section-2-tab-2-heading'] !!}</div>
                 </div>
-                <div class="font-light">
+                <div class="font-light max-xl:text-sm">
                     {!! $content['section-2-tab-2-subheading'] !!}
                 </div>
             </div>
@@ -69,14 +69,14 @@ with(fn() => [
                     </div>
                     <div>{!! $content['section-2-tab-3-heading'] !!}</div>
                 </div>
-                <div class="font-light">
+                <div class="font-light max-xl:text-sm">
                     {!! $content['section-2-tab-3-subheading'] !!}
                 </div>
             </div>
         </div>
     </div>
-    <div x-data="{ show: 1 }" class="flex flex-col gap-8 py-12 text-center">
-        <div class="text-4xl font-semibold capitalize">{!! $content['section-3-heading'] !!}</div>
+    <div x-data="{ show: 1 }" class="flex flex-col items-center gap-8 py-12 text-center">
+        <div class="max-xl:w-11/12 text-3xl xl:text-4xl font-semibold capitalize">{!! $content['section-3-heading'] !!}</div>
         <div x-show="show == 1" class="w-4/5 mx-auto italic">
             {!! $content['section-3-quote-1'] !!}
         </div>
@@ -89,11 +89,11 @@ with(fn() => [
         </div>
     </div>
     <div class="flex justify-end relative overflow-clip">
-        <div class="absolute -z-50">
-            <img src="{{ asset('images/about-us-bg.webp') }}">
+        <div class="absolute -z-50 max-xl:inset-0">
+            <img class="max-xl:size-full" src="{{ asset('images/about-us-bg.webp') }}">
         </div>
-        <div class="w-3/5 flex flex-col gap-5 text-white bg-primary/75 py-48 px-10">
-            <div class="text-5xl font-semibold capitalize">
+        <div class="xl:w-3/5 flex flex-col gap-5 text-white bg-primary/75 max-xl:py-12 xl:py-48 px-10 max-xl:text-sm">
+            <div class="text-3xl xl:text-5xl font-semibold capitalize">
                 {!! $content['section-4-heading'] !!}
             </div>
             <div>

@@ -27,9 +27,11 @@ class BlogResource extends Resource
     {
         return $form
             ->schema([
+                FileUpload::make('image')->image()->preserveFilenames()->directory('blogs')->required(),
                 TextInput::make('title')->required(),
                 RichEditor::make('description')->required(),
-                FileUpload::make('image')->image()->preserveFilenames()->directory('blogs')->required()
+                TextInput::make('title_fr')->required(),
+                RichEditor::make('description_fr')->required(),
             ])->columns(1);
     }
 

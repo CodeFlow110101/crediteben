@@ -16,22 +16,22 @@ with(fn() => [
 
 <div>
     <div class="fixed -z-50">
-        <img class="size-full" src="{!! asset('images/home-bg.webp') !!}">
+        <img class="size-full max-xl:hidden" src="{!! asset('images/home-bg.webp') !!}">
     </div>
     <div class="bg-white">
-        <div class="flex relative">
-            <img class="absolute size-full object-scale-down object-right" src="{!! asset('images/home-cover-image.webp') !!}">
-            <div class="w-1/2 h-full relative z-10 flex flex-col gap-6 text-white bg-white bg-gradient-to-tr from-primary to-90% to-primary/80 *:w-4/5 *:mx-auto py-36">
-                <div class="text-accent uppercase font-medium text-2xl">{!! $content["cover-header-1"] !!}</div>
+        <div class="flex max-xl:flex-col-reverse relative">
+            <img class="xl:absolute size-full object-scale-down object-right" src="{!! asset('images/home-cover-image.webp') !!}">
+            <div class="xl:w-1/2 h-full relative z-10 flex flex-col gap-6 text-white bg-white bg-gradient-to-tr from-primary to-90% to-primary/80  xl:*:w-4/5 *:w-11/12 *:mx-auto xl:py-36 py-12">
+                <div class="text-accent uppercase font-medium xl:text-2xl tex-lg">{!! $content["cover-header-1"] !!}</div>
                 <div class="flex flex-col gap-2">
-                    <div class="text-6xl font-bold">{!! $content["cover-header-2"] !!}</div>
-                    <div class="text-6xl font-bold italic">{!! $content["cover-header-3"] !!}</div>
+                    <div class="xl:text-6xl text-3xl font-bold">{!! $content["cover-header-2"] !!}</div>
+                    <div class="xl:text-6xl text-3xl font-bold italic">{!! $content["cover-header-3"] !!}</div>
                 </div>
-                <div class="text-2xl font-extralight py-2 leading-relaxed tracking-wide">
+                <div class="xl:text-2xl text-lg font-extralight py-2 leading-relaxed tracking-wide">
                     {!! $content["cover-description-1"] !!}
                 </div>
                 <div>
-                    <a href="/contact-us" wire:navigate class="flex gap-2 items-center uppercase group font-medium text-lg tracking-wide text-white bg-black hover:bg-accent hover:text-black w-min whitespace-nowrap py-3 px-8 rounded-lg *:transition-all transition-all hover:scale-125">
+                    <a href="/contact-us" wire:navigate class="flex gap-2 items-center uppercase group font-medium xl:text-lg xl:tracking-wide text-white bg-black hover:bg-accent hover:text-black w-min whitespace-nowrap py-3 px-8 rounded-lg *:transition-all transition-all hover:scale-125">
                         <div>{!! $content["cover-button-title"] !!}</div>
                         <div class="border border-white group-hover:border-black rounded-full flex justify-center items-center *:size-5 *:text-white group-hover:*:text-black *:transition-all">
                             <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -42,23 +42,23 @@ with(fn() => [
                 </div>
             </div>
         </div>
-        <div class="py-10 flex flex-col gap-5 text-center">
-            <div class="uppercase text-2xl tracking-wide font-medium text-primary">{!! $content["section-2-title-1"] !!}</div>
-            <div class="text-4xl font-semibold">{!! $content["section-2-title-2"] !!}</div>
-            <div class="w-3/4 mx-auto text-xl leading-relaxed font-light">
+        <div class="py-10 flex flex-col gap-5 text-center *:w-11/12 items-center">
+            <div class="uppercase xl:text-2xl tracking-wide font-medium text-primary">{!! $content["section-2-title-1"] !!}</div>
+            <div class="text-2xl xl:text-4xl font-semibold">{!! $content["section-2-title-2"] !!}</div>
+            <div class="w-3/4 mx-auto xl:text-xl xl:leading-relaxed font-light">
                 {!! $content["section-2-description-1"] !!}
             </div>
         </div>
-        <div class="flex w-4/5 mx-auto *:flex-1 gap-12 py-12">
+        <div class="flex max-xl:flex-col w-11/12 xl:w-4/5 mx-auto *:flex-1 gap-0 xl:gap-12 py-12">
             <div>
                 <img class="size-full object-cover" src="{!! asset('images/home-image.webp') !!}">
             </div>
-            <div class="flex flex-col gap-12 py-12">
-                <div class="font-semibold text-3xl">
+            <div class="flex flex-col gap-6 xl:gap-12 py-2 xl:py-12">
+                <div class="font-semibold text-2xl xl:text-3xl">
                     {!! $content["section-3-title-1"] !!}
                 </div>
-                <div x-data="{ show: 'process' }" class="flex *:flex-1 gap-12">
-                    <div class="flex flex-col gap-2 text-2xl uppercase *:py-6 text-center font-semibold *:border-b-2 *:hover:border-primary tracking-wide *:cursor-pointer">
+                <div x-data="{ show: 'process' }" class="flex max-xl:flex-col *:flex-1 gap-4 xl:gap-12">
+                    <div class="flex flex-col gap-2 xl:text-2xl uppercase *:py-2 xl:*:py-6 text-center font-semibold *:border-b-2 *:hover:border-primary tracking-wide *:cursor-pointer">
                         <div @click="show = 'process';" :class="show == 'process' ? 'text-primary border-accent transition-all' : 'border-transparent'"> {!! $content["section-3-option-name-1"] !!}</div>
                         <div @click="show = 'mission';" :class="show == 'mission' ? 'text-primary border-accent transition-all' : 'border-transparent'">{!! $content["section-3-option-name-2"] !!}</div>
                         <div @click="show = 'values';" :class="show == 'values' ? 'text-primary border-accent transition-all' : 'border-transparent'">{!! $content["section-3-option-name-3"] !!}</div>
@@ -78,29 +78,32 @@ with(fn() => [
             </div>
         </div>
     </div>
-    <div class="bg-gradient-to-b from-primary/50 to-transparent py-16">
-        <div class="flex flex-col items-center gap-16 translate-y-1/2">
-            <div class="text-6xl font-semibold text-white italic">{!! $content["section-4-title"] !!}</div>
-            <div class="flex *:flex-1 *:odd:bg-primary *:even:bg-primary/90 *:p-12 bg-white text-center w-4/5">
-                <div class="flex flex-col text-white gap-2 items-center">
-                    <div class="text-6xl font-semibold">{!! $content["section-4-tab-1-heading"] !!}</div>
+    <div class="xl:bg-gradient-to-b xl:from-primary/50 xl:to-transparent xl:py-16 relative">
+        <div class="flex flex-col items-center xl:gap-16 xl:translate-y-1/2">
+            <div class="max-xl:relative max-xl:bg-gradient-to-b max-xl:from-primary/50 max-xl:to-transparent">
+                <img class="absolute xl:hidden inset-x-0 -z-50 size-full" src="{!! asset('images/home-bg.webp') !!}">
+                <div class="text-4xl xl:text-6xl font-semibold text-white italic max-xl:py-32 text-center">{!! $content["section-4-title"] !!}</div>
+            </div>
+            <div class="flex max-xl:flex-col *:flex-1 *:odd:bg-primary *:even:bg-primary/90 *:p-12 bg-white text-center w-11/12 xl:w-4/5 max-xl:-translate-y-16">
+                <div class="flex flex-col max-xl:text-sm text-white gap-2 items-center">
+                    <div class="text-4xl xl:text-6xl font-semibold">{!! $content["section-4-tab-1-heading"] !!}</div>
                     <div>{!! $content["section-4-tab-1-subheading"] !!}</div>
                 </div>
-                <div class="flex flex-col text-white gap-2 items-center">
-                    <div class="text-6xl font-semibold">{!! $content["section-4-tab-2-heading"] !!}</div>
+                <div class="flex flex-col max-xl:text-sm text-white gap-2 items-center">
+                    <div class="text-4xl xl:text-6xl font-semibold">{!! $content["section-4-tab-2-heading"] !!}</div>
                     <div>{!! $content["section-4-tab-2-subheading"] !!}</div>
                 </div>
-                <div class="flex flex-col text-white gap-2 items-center">
-                    <div class="text-6xl font-semibold">{!! $content["section-4-tab-3-heading"] !!}</div>
+                <div class="flex flex-col max-xl:text-sm text-white gap-2 items-center">
+                    <div class="text-4xl xl:text-6xl font-semibold">{!! $content["section-4-tab-3-heading"] !!}</div>
                     <div>{!! $content["section-4-tab-3-subheading"] !!}</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="bg-white">
-        <div class="h-32"></div>
-        <div class="py-12">
-            <div class="flex gap-5 *:odd:flex-1 w-4/5 mx-auto">
+        <div class="xl:h-32"></div>
+        <div class="py-4 xl:py-12">
+            <div class="flex max-xl:flex-col gap-5 *:odd:flex-1 w-4/5 mx-auto">
                 <div class="flex flex-col gap-4">
                     <div class="text-primary text-2xl uppercase">
                         {!! $content["section-5-tab-1-heading-1"] !!}
@@ -123,7 +126,7 @@ with(fn() => [
                     </div>
                 </div>
                 <div class="w-0 border-r border-black/20"></div>
-                <div class="flex flex-col justify-center gap-4 *:gap-4 text-xl *:items-center">
+                <div class="flex flex-col justify-center gap-4 *:gap-4 xl:text-xl *:items-center">
                     <div class="flex">
                         <div>
                             <svg class="size-15 text-accent" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -158,13 +161,13 @@ with(fn() => [
             </div>
         </div>
         <div class="flex flex-col items-center py-12">
-            <div class="text-primary text-2xl font-medium uppercase">
+            <div class="text-primary xl:text-2xl font-medium uppercase text-center">
                 {!! $content["section-6-heading-1"] !!}
             </div>
-            <div class="font-semibold text-4xl">
+            <div class="font-semibold text-xl xl:text-4xl text-center">
                 {!! $content["section-6-heading-2"] !!}
             </div>
-            <div class="grid grid-cols-3 gap-6 w-4/5 mx-auto py-12">
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 w-11/12 xl:w-4/5 mx-auto py-12">
                 @foreach($blogs as $blog)
                 <div class="flex flex-col gap-2 shadow border border-black/5">
                     <div>

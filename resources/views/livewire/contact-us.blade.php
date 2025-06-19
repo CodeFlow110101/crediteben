@@ -37,7 +37,7 @@ $submit = function () {
 
 <div class="w-full flex flex-col items-center gap-12">
     <livewire:utility.bg-cover />
-    <div class="w-4/5 mx-auto flex *:flex-1 gap-8 py-12">
+    <div class="w-11/12 xl:w-4/5 mx-auto flex max-xl:flex-col *:flex-1 gap-16 xl:gap-8 xl:py-12">
         <div class="flex flex-col gap-3">
             <div class="text-primary text-2xl">
                 {!! $content['section-1-heading'] !!}
@@ -69,7 +69,7 @@ $submit = function () {
         </div>
         <div>
             <form wire:submit.prevent="submit" class="font-light flex flex-col gap-6">
-                <div class="flex *:flex-1 gap-4">
+                <div class="flex max-xl:flex-col *:flex-1 gap-4">
                     <div>
                         <input wire:model="first_name" class="bg-black/5 py-2 px-4 w-full outline-none" placeholder="First Name">
                         @error('first_name')
@@ -95,7 +95,7 @@ $submit = function () {
                     <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="flex *:flex-1 gap-4">
+                <div class="flex max-xl:flex-col *:flex-1 gap-4">
                     <div>
                         <input wire:model="company_name" class="bg-black/5 py-2 px-4 w-full outline-none" placeholder="Company Name">
                         @error('company_name')

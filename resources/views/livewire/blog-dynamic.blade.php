@@ -12,12 +12,12 @@ mount(function () {
 
 ?>
 
-<div class="w-full flex flex-col items-center gap-12">
+<div class="w-full flex flex-col items-center gap-12 py-12">
     <livewire:utility.bg-cover />
-    <div class="flex flex-col items-start gap-12 w-4/5">
-        <div class="flex flex-col gap-4">
+    <div class="flex flex-col items-start gap-24 w-4/5">
+        <div class="flex flex-col items-center gap-8 xl:gap-12">
             <div class="text-primary text-2xl font-semibold uppercase">{{ $blog->title }}</div>
-            <div class="w-4/5 h-[50vh] overflow-clip">
+            <div class="w-11/12 xl:w-4/5 h-[50vh] overflow-clip">
                 <img class="object-center" src="{{ asset('storage/'.$blog->image) }}">
             </div>
             <div class="font-light">
