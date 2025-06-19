@@ -2,6 +2,7 @@
 
 use App\Models\Blog;
 use App\Models\Home;
+use App\Models\Image;
 use Illuminate\Support\Facades\App;
 
 use function Livewire\Volt\{state, with};
@@ -9,6 +10,9 @@ use function Livewire\Volt\{state, with};
 with(fn() => [
     'blogs' => Blog::get(),
     'content' => Home::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'cover_image' => Image::where('key', 'home-cover-image')->first()->image,
+    'home_image_1' => Image::where('key', 'home-image-1')->first()->image,
+    'home_image_2' => Image::where('key', 'home-image-2')->first()->image,
 ]);
 
 
@@ -16,11 +20,11 @@ with(fn() => [
 
 <div>
     <div class="fixed -z-50">
-        <img class="size-full max-xl:hidden" src="{!! asset('images/home-bg.webp') !!}">
+        <img class="size-full max-xl:hidden" src="{{ asset('storage/'.$home_image_1) }}">
     </div>
     <div class="bg-white">
         <div class="flex max-xl:flex-col-reverse relative">
-            <img class="xl:absolute size-full object-scale-down object-right" src="{!! asset('images/home-cover-image.webp') !!}">
+            <img class="xl:absolute size-full object-scale-down object-right" src="{{ asset('storage/'.$cover_image) }}">
             <div class="xl:w-1/2 h-full relative z-10 flex flex-col gap-6 text-white bg-white bg-gradient-to-tr from-primary to-90% to-primary/80  xl:*:w-4/5 *:w-11/12 *:mx-auto xl:py-36 py-12">
                 <div class="text-accent uppercase font-medium xl:text-2xl tex-lg">{!! $content["cover-header-1"] !!}</div>
                 <div class="flex flex-col gap-2">
@@ -51,7 +55,7 @@ with(fn() => [
         </div>
         <div class="flex max-xl:flex-col w-11/12 xl:w-4/5 mx-auto *:flex-1 gap-0 xl:gap-12 py-12">
             <div>
-                <img class="size-full object-cover" src="{!! asset('images/home-image.webp') !!}">
+                <img class="size-full object-cover" src="{{ asset('storage/'.$home_image_2) }}">
             </div>
             <div class="flex flex-col gap-6 xl:gap-12 py-2 xl:py-12">
                 <div class="font-semibold text-2xl xl:text-3xl">
@@ -81,7 +85,7 @@ with(fn() => [
     <div class="xl:bg-gradient-to-b xl:from-primary/50 xl:to-transparent xl:py-16 relative">
         <div class="flex flex-col items-center xl:gap-16 xl:translate-y-1/2">
             <div class="max-xl:relative max-xl:bg-gradient-to-b max-xl:from-primary/50 max-xl:to-transparent">
-                <img class="absolute xl:hidden inset-x-0 -z-50 size-full" src="{!! asset('images/home-bg.webp') !!}">
+                <img class="absolute xl:hidden inset-x-0 -z-50 size-full" src="{{ asset('storage/'.$home_image_1) }}">
                 <div class="text-4xl xl:text-6xl font-semibold text-white italic max-xl:py-32 text-center">{!! $content["section-4-title"] !!}</div>
             </div>
             <div class="flex max-xl:flex-col *:flex-1 *:odd:bg-primary *:even:bg-primary/90 *:p-12 bg-white text-center w-11/12 xl:w-4/5 max-xl:-translate-y-16">

@@ -3,6 +3,7 @@
 use App\Models\AboutUs;
 use App\Models\BlogPage;
 use App\Models\ContactUs;
+use App\Models\Image;
 use App\Models\ServicePage;
 use Illuminate\Support\Facades\App;
 
@@ -15,6 +16,10 @@ with(fn() => [
     'contactus' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
     'service' => ServicePage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
     'blog' => BlogPage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'service_cover' => Image::where('key', 'service-cover')->first()->image,
+    'about_us_cover' => Image::where('key', 'about-us-cover')->first()->image,
+    'contact_us_cover' => Image::where('key', 'contact-us-cover')->first()->image,
+    'blog_cover' => Image::where('key', 'blog-cover')->first()->image,
 ]);
 
 
@@ -26,13 +31,13 @@ mount(function () {
 
 <div class="h-[50vh] w-full overflow-clip flex justify-end relative">
     @if($path == 'service')
-    <img class="object-cover" src="{{ asset('images/service-cover-image.webp') }}">
+    <img class="object-cover" src="{{ asset('storage/'.$service_cover) }}">
     @elseif($path == 'about-us')
-    <img class="object-cover" src="{{ asset('images/home-bg.webp') }}">
+    <img class="object-cover" src="{{ asset('storage/'.$about_us_cover) }}">
     @elseif($path == 'contact-us')
-    <img class="object-cover" src="{{ asset('images/contact-us-cover.webp') }}">
+    <img class="object-cover" src="{{ asset('storage/'.$contact_us_cover) }}">
     @elseif($path == 'blog' || $path == 'blog-dynamic')
-    <img class="object-cover object-bottom" src="{{ asset('images/blog-cover.webp') }}">
+    <img class="object-cover object-bottom" src="{{ asset('storage/'.$blog_cover) }}">
     @endif
     <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-primary/90 flex flex-col items-center">
         <div class="w-11/12 xl:w-4/5 flex gap-4 py-8 mt-auto">

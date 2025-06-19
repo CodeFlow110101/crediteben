@@ -7,6 +7,7 @@ use App\Models\BlogPage;
 use App\Models\ContactUs;
 use App\Models\Footer;
 use App\Models\Home;
+use App\Models\Image;
 use App\Models\ServicePage;
 use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -390,6 +391,49 @@ class ContentSeeder extends Seeder
             ]
         ];
 
+        $image = [
+            [
+                "key" => "home-cover-image",
+                "image" => "",
+            ],
+            [
+                "key" => "home-image-1",
+                "image" => "",
+            ],
+            [
+                "key" => "home-image-2",
+                "image" => "",
+            ],
+            [
+                "key" => "service-cover",
+                "image" => "",
+            ],
+            [
+                "key" => "about-us-cover",
+                "image" => "",
+            ],
+            [
+                "key" => "contact-us-cover",
+                "image" => "",
+            ],
+            [
+                "key" => "blog-cover",
+                "image" => "",
+            ],
+            [
+                "key" => "about-us-image-1",
+                "image" => "",
+            ],
+            [
+                "key" => "about-us-image-2",
+                "image" => "",
+            ],
+            [
+                "key" => "footer-image-1",
+                "image" => "",
+            ],
+        ];
+
         collect($home)->each(fn($content) => Home::updateOrCreate(['key' => $content['key']], $content));
         collect($aboutus)->each(fn($content) => AboutUs::updateOrCreate(['key' => $content['key']], $content));
         collect($contactus)->each(fn($content) => ContactUs::updateOrCreate(['key' => $content['key']], $content));
@@ -397,5 +441,6 @@ class ContentSeeder extends Seeder
         collect($blog)->each(fn($content) => BlogPage::updateOrCreate(['key' => $content['key']], $content));
         collect($footer)->each(fn($content) => Footer::updateOrCreate(['key' => $content['key']], $content));
         collect($setting)->each(fn($content) => Setting::updateOrCreate(['name' => $content['name']], $content));
+        collect($image)->each(fn($content) => Image::updateOrCreate(['key' => $content['key']], $content));
     }
 }

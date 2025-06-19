@@ -4,6 +4,7 @@ use function Livewire\Volt\{rules, state, with};
 
 use App\Mail\FooterForm;
 use App\Models\Footer;
+use App\Models\Image;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
@@ -19,6 +20,7 @@ with(fn() => [
     'facebook' => Setting::where('name', 'facebook')->first()->value,
     'twitter' => Setting::where('name', 'twitter')->first()->value,
     'linkedin' => Setting::where('name', 'linkedin')->first()->value,
+    'footer_image_1' => Image::where('key', 'footer-image-1')->first()->image,
 ]);
 
 $submit = function () {
@@ -35,7 +37,7 @@ $submit = function () {
     @if(request()->path() != 'contact-us')
     <div class="flex justify-center">
         <div class="xl:w-4/5 flex max-xl:flex-col rounded-b-3xl xl:rounded-r-3xl overflow-clip justify-end relative">
-            <img src="{{ asset('images/footer-bg-image.webp') }}" class="xl:absolute inset-0 z-0 h-full">
+            <img src="{{ asset('storage/'.$footer_image_1) }}" class="xl:absolute inset-0 z-0 h-full">
             <div class="xl:w-1/2 bg-primary flex justify-center py-12 relative z-10">
                 <form wire:submit.prevent="submit" class="w-4/5 text-white flex flex-col gap-4 xl:gap-8">
                     <div class="flex flex-col gap-3">

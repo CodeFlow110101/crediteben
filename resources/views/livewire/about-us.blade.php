@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AboutUs;
+use App\Models\Image;
 use App\Models\Services;
 use Illuminate\Support\Facades\App;
 
@@ -9,6 +10,8 @@ use function Livewire\Volt\{state, with};
 with(fn() => [
     'content' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
     'services' => Services::get()->mapWithKeys(fn($service) => [App::isLocale('fr') ? $service->title_fr : $service->title => App::isLocale('fr') ? $service->description_fr : $service->description]),
+    'about_us_image_1' => Image::where('key', 'about-us-image-1')->first()->image,
+    'about_us_image_2' => Image::where('key', 'about-us-image-2')->first()->image,
 ]);
 
 ?>
@@ -29,7 +32,7 @@ with(fn() => [
             </div>
         </div>
         <div>
-            <img class="size-full object-cover" src="{{ asset('images/home-image.webp') }}">
+            <img class="size-full object-cover" src="{{ asset('storage/'.$about_us_image_1) }}">
         </div>
     </div>
     <div class="bg-primary py-12">
@@ -90,7 +93,7 @@ with(fn() => [
     </div>
     <div class="flex justify-end relative overflow-clip">
         <div class="absolute -z-50 max-xl:inset-0">
-            <img class="max-xl:size-full" src="{{ asset('images/about-us-bg.webp') }}">
+            <img class="max-xl:size-full" src="{{ asset('storage/'.$about_us_image_2) }}">
         </div>
         <div class="xl:w-3/5 flex flex-col gap-5 text-white bg-primary/75 max-xl:py-12 xl:py-48 px-10 max-xl:text-sm">
             <div class="text-3xl xl:text-5xl font-semibold capitalize">
