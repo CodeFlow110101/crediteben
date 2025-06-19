@@ -33,11 +33,29 @@ class BlogPageResource extends Resource
             ->schema([
                 RichEditor::make('en')->label('English')
                     ->toolbarButtons([
+                        'blockquote',
                         'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'italic',
+                        'link',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
                     ]),
                 RichEditor::make('fr')->label('French')
                     ->toolbarButtons([
+                        'blockquote',
                         'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'italic',
+                        'link',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
                     ])
             ]);
     }
