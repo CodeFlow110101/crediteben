@@ -103,7 +103,7 @@ with(fn() => [
     <div class="bg-white">
         <div class="xl:h-32"></div>
         <div class="py-4 xl:py-12">
-            <div class="flex max-xl:flex-col gap-5 *:odd:flex-1 w-4/5 mx-auto">
+            <div class="flex max-xl:flex-col gap-5 *:odd:flex-1 w-11/12 xl:w-4/5 mx-auto">
                 <div class="flex flex-col gap-4">
                     <div class="text-primary text-2xl uppercase">
                         {!! $content["section-5-tab-1-heading-1"] !!}
