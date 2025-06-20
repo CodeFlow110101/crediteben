@@ -12,13 +12,11 @@ on([
 ]);
 
 mount(function () {
-    // App::isLocale('fr');
     $this->path = request()->route()->getName();
 });
 ?>
 
 <div>
-    @dump($isfrench)
     <livewire:header :isfrench="$isfrench" />
     @if($path == 'home')
     <livewire:home :isfrench="$isfrench" />
