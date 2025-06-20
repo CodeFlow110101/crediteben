@@ -1,28 +1,37 @@
 <?php
 
-use function Livewire\Volt\{state, mount};
+use function Livewire\Volt\{state, mount, on};
 
-state('path');
+state(['path', 'isfrench' => session('isfrench', false)]);
+
+on([
+    'toggle-language' => function ($value) {
+        $this->isfrench = $value;
+        session(['isfrench' => $this->isfrench]);
+    },
+]);
 
 mount(function () {
+    // App::isLocale('fr');
     $this->path = request()->route()->getName();
 });
 ?>
 
 <div>
-    <livewire:header />
+    @dump($isfrench)
+    <livewire:header :isfrench="$isfrench" />
     @if($path == 'home')
-    <livewire:home />
+    <livewire:home :isfrench="$isfrench" />
     @elseif($path == 'service')
-    <livewire:service />
+    <livewire:service :isfrench="$isfrench" />
     @elseif($path == 'about-us')
-    <livewire:about-us />
+    <livewire:about-us :isfrench="$isfrench" />
     @elseif($path == 'contact-us')
-    <livewire:contact-us />
+    <livewire:contact-us :isfrench="$isfrench" />
     @elseif($path == 'blog')
-    <livewire:blog />
+    <livewire:blog :isfrench="$isfrench" />
     @elseif($path == 'blog-dynamic')
-    <livewire:blog-dynamic />
+    <livewire:blog-dynamic :isfrench="$isfrench" />
     @endif
-    <livewire:footer />
+    <livewire:footer :isfrench="$isfrench" />
 </div>

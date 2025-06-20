@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\App;
 
 use function Livewire\Volt\{state, mount, with};
 
-state('path');
+state(['path']);
+state(['isfrench'])->reactive();
 
 with(fn() => [
-    'aboutus' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
-    'contactus' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
-    'service' => ServicePage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
-    'blog' => BlogPage::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'aboutus' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
+    'contactus' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
+    'service' => ServicePage::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
+    'blog' => BlogPage::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'service_cover' => Image::where('key', 'service-cover')->first()->image,
     'about_us_cover' => Image::where('key', 'about-us-cover')->first()->image,
     'contact_us_cover' => Image::where('key', 'contact-us-cover')->first()->image,
@@ -23,7 +24,8 @@ with(fn() => [
 ]);
 
 
-mount(function () {
+mount(function ($isfrench) {
+    $this->isfrench = $isfrench;
     $this->path = request()->route()->getName();
 });
 

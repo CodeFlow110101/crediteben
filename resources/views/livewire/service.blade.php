@@ -3,16 +3,20 @@
 use App\Models\Services;
 use Illuminate\Support\Facades\App;
 
-use function Livewire\Volt\{state, with};
+use function Livewire\Volt\{state, with, mount};
+
+state('isfrench')->reactive();
 
 with(fn() => [
-    'services' => Services::get()->mapWithKeys(fn($service) => [App::isLocale('fr') ? $service->title_fr : $service->title => App::isLocale('fr') ? $service->description_fr : $service->description]),
+    'services' => Services::get()->mapWithKeys(fn($service) => [$this->isfrench ? $service->title_fr : $service->title =>  $this->isfrench ? $service->description_fr : $service->description]),
 ]);
+
+mount(fn($isfrench) => $this->isfrench = $isfrench);
 
 ?>
 
 <div class="w-full flex flex-col items-center gap-12 max-xl:pb-12">
-    <livewire:utility.bg-cover />
+    <livewire:utility.bg-cover :isfrench="$isfrench" />
     <div class="w-11/12 xl:w-4/5 flex max-xl:flex-col gap-10">
         <div class="flex flex-col gap-12 flex-1">
             @foreach($services as $title => $description)

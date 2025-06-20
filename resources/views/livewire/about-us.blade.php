@@ -5,19 +5,23 @@ use App\Models\Image;
 use App\Models\Services;
 use Illuminate\Support\Facades\App;
 
-use function Livewire\Volt\{state, with};
+use function Livewire\Volt\{state, with, mount};
+
+state('isfrench')->reactive();
 
 with(fn() => [
-    'content' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
-    'services' => Services::get()->mapWithKeys(fn($service) => [App::isLocale('fr') ? $service->title_fr : $service->title => App::isLocale('fr') ? $service->description_fr : $service->description]),
+    'content' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
+    'services' => Services::get()->mapWithKeys(fn($service) => [$this->isfrench ? $service->title_fr : $service->title => $this->isfrench ? $service->description_fr : $service->description]),
     'about_us_image_1' => Image::where('key', 'about-us-image-1')->first()->image,
     'about_us_image_2' => Image::where('key', 'about-us-image-2')->first()->image,
 ]);
 
+mount(fn($isfrench) => $this->isfrench = $isfrench);
+
 ?>
 
 <div class="w-full flex flex-col items-center gap-12">
-    <livewire:utility.bg-cover />
+    <livewire:utility.bg-cover :isfrench="$isfrench" />
     <div class="flex max-xl:flex-col w-11/12 xl:w-4/5 mx-auto *:flex-1 gap-2 xl:gap-12 xl:py-12">
         <div class="flex flex-col gap-4 py-12">
             <div class="uppercase text-primary text-xl xl:text-2xl tracking-wider font-medium">{{ $content['section-1-heading'] }}</div>

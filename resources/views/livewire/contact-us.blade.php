@@ -5,8 +5,9 @@ use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
-use function Livewire\Volt\{state, with, rules};
+use function Livewire\Volt\{state, with, rules, mount};
 
+state(['isfrench'])->reactive();
 state(['first_name', 'last_name', 'phone_no', 'email', 'company_name', 'job_title', 'subject', 'message', 'showThankYouMessage']);
 
 rules(['first_name' => 'required', 'email' => 'required|email', 'message' => 'required']);
@@ -20,15 +21,17 @@ with(fn() => [
         'I work for an accounting firm',
         'I have a question about my personal debt'
     ]),
-    'content' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'content' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'phone' => Setting::where('name', 'phone')->first()->value,
     'emailId' => Setting::where('name', 'email')->first()->value,
 ]);
 
+mount(fn($isfrench) => $this->isfrench = $isfrench);
+
 $submit = function () {
     $this->validate();
 
-    Mail::to(env('ADMIN_MAIL'))->send(new ContactForm($this->first_name, $this->last_name, $this->phone_no, $this->email, $this->company_name, $this->job_title, $this->subject, $this->message));
+    Setting::where('name', 'email')->first()->value && Mail::to(Setting::where('name', 'email')->first()->value)->send(new ContactForm($this->first_name, $this->last_name, $this->phone_no, $this->email, $this->company_name, $this->job_title, $this->subject, $this->message));
     $this->reset();
     $this->showThankYouMessage = true;
 }
@@ -36,7 +39,7 @@ $submit = function () {
 ?>
 
 <div class="w-full flex flex-col items-center gap-12">
-    <livewire:utility.bg-cover />
+    <livewire:utility.bg-cover :isfrench="$isfrench" />
     <div class="w-11/12 xl:w-4/5 mx-auto flex max-xl:flex-col *:flex-1 gap-16 xl:gap-8 xl:py-12">
         <div class="flex flex-col gap-3">
             <div class="text-primary text-2xl">

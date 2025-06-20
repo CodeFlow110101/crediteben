@@ -1,26 +1,29 @@
 <?php
 
-use function Livewire\Volt\{rules, state, with};
+use function Livewire\Volt\{rules, state, with, mount};
 
 use App\Mail\FooterForm;
 use App\Models\Footer;
 use App\Models\Image;
+use App\Models\Navbar;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
 
 state(['name', 'email', 'message', 'showThankYouMessage']);
+state('isfrench')->reactive();
 
 rules(['name' => 'required', 'email' => 'required|email', 'message' => 'required']);
 
 with(fn() => [
-    'footer' => Footer::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'footer' => Footer::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'phone' => Setting::where('name', 'phone')->first()->value,
     'emailId' => Setting::where('name', 'email')->first()->value,
     'facebook' => Setting::where('name', 'facebook')->first()->value,
     'twitter' => Setting::where('name', 'twitter')->first()->value,
     'linkedin' => Setting::where('name', 'linkedin')->first()->value,
     'footer_image_1' => Image::where('key', 'footer-image-1')->first()->image,
+    'navbar' => Navbar::get()->mapWithKeys(fn($element) => [$element->key => $this->isfrench ? $element->fr : $element->en])
 ]);
 
 $submit = function () {
@@ -30,6 +33,8 @@ $submit = function () {
     $this->reset();
     $this->showThankYouMessage = true;
 };
+
+mount(fn($isfrench) => $this->isfrench = $isfrench);
 
 ?>
 
@@ -108,11 +113,11 @@ $submit = function () {
             <div class="flex flex-col gap-2">
                 <div class="uppercase text-2xl font-semibold">Comapny</div>
                 <div class="flex flex-col gap-2 *:hover:text-accent *:transition-colors text-lg">
-                    <a href="/" wire:navigate>Home</a>
-                    <a href="/services" wire:navigate>Services</a>
-                    <a href="/about-us" wire:navigate>About Us</a>
-                    <a href="/blog" wire:navigate>Blog</a>
-                    <a href="/contact-us" wire:navigate>Get started</a>
+                    <a href="/" wire:navigate>{!! $navbar['home'] !!}</a>
+                    <a href="/services" wire:navigate>{!! $navbar['service'] !!}</a>
+                    <a href="/about-us" wire:navigate> {!! $navbar['about_us'] !!}</a>
+                    <a href="/blog" wire:navigate>{!! $navbar['blog'] !!}</a>
+                    <a href="/contact-us" wire:navigate>{!! $navbar['contact'] !!}</a>
                 </div>
             </div>
         </div>

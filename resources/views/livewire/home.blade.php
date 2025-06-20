@@ -5,16 +5,19 @@ use App\Models\Home;
 use App\Models\Image;
 use Illuminate\Support\Facades\App;
 
-use function Livewire\Volt\{state, with};
+use function Livewire\Volt\{state, with, mount};
+
+state('isfrench')->reactive();
 
 with(fn() => [
     'blogs' => Blog::get(),
-    'content' => Home::get()->mapWithKeys(fn($content) => [$content->key => App::isLocale('fr') ? $content->fr : $content->en]),
+    'content' => Home::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'cover_image' => Image::where('key', 'home-cover-image')->first()->image,
     'home_image_1' => Image::where('key', 'home-image-1')->first()->image,
     'home_image_2' => Image::where('key', 'home-image-2')->first()->image,
 ]);
 
+mount(fn($isfrench) => $this->isfrench = $isfrench);
 
 ?>
 
@@ -179,10 +182,10 @@ with(fn() => [
                     </div>
                     <div class="py-4 px-4 flex flex-col gap-2 grow">
                         <div class="text-primary text-xl">
-                            {!! $blog->title !!}
+                            {!! $isfrench ? $blog->title_fr: $blog->title !!}
                         </div>
                         <div class="text-lg">
-                            {!! Str::of($blog->description)->stripTags()->limit(30) !!}
+                            {!! Str::of( $isfrench ? $blog->description_fr : $blog->description)->stripTags()->limit(30) !!}
                         </div>
                         <div class="mt-auto">
                             <a href="/" wire:navigate class="text-primary text-sm font-medium">read more</a>

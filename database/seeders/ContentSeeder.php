@@ -8,6 +8,7 @@ use App\Models\ContactUs;
 use App\Models\Footer;
 use App\Models\Home;
 use App\Models\Image;
+use App\Models\Navbar;
 use App\Models\ServicePage;
 use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -434,13 +435,42 @@ class ContentSeeder extends Seeder
             ],
         ];
 
-        collect($home)->each(fn($content) => Home::updateOrCreate(['key' => $content['key']], $content));
-        collect($aboutus)->each(fn($content) => AboutUs::updateOrCreate(['key' => $content['key']], $content));
-        collect($contactus)->each(fn($content) => ContactUs::updateOrCreate(['key' => $content['key']], $content));
-        collect($service)->each(fn($content) => ServicePage::updateOrCreate(['key' => $content['key']], $content));
-        collect($blog)->each(fn($content) => BlogPage::updateOrCreate(['key' => $content['key']], $content));
-        collect($footer)->each(fn($content) => Footer::updateOrCreate(['key' => $content['key']], $content));
-        collect($setting)->each(fn($content) => Setting::updateOrCreate(['name' => $content['name']], $content));
-        collect($image)->each(fn($content) => Image::updateOrCreate(['key' => $content['key']], $content));
+        $navbar = [
+            [
+                "key" => "home",
+                "en" => "Home",
+                "fr" => ""
+            ],
+            [
+                "key" => "service",
+                "en" => "services",
+                "fr" => ""
+            ],
+            [
+                "key" => "about_us",
+                "en" => "about us",
+                "fr" => ""
+            ],
+            [
+                "key" => "blog",
+                "en" => "blog",
+                "fr" => ""
+            ],
+            [
+                "key" => "contact",
+                "en" => "get started",
+                "fr" => ""
+            ],
+        ];
+
+        collect($home)->each(fn($content) => Home::firstOrCreate(['key' => $content['key']], $content));
+        collect($aboutus)->each(fn($content) => AboutUs::firstOrCreate(['key' => $content['key']], $content));
+        collect($contactus)->each(fn($content) => ContactUs::firstOrCreate(['key' => $content['key']], $content));
+        collect($service)->each(fn($content) => ServicePage::firstOrCreate(['key' => $content['key']], $content));
+        collect($blog)->each(fn($content) => BlogPage::firstOrCreate(['key' => $content['key']], $content));
+        collect($footer)->each(fn($content) => Footer::firstOrCreate(['key' => $content['key']], $content));
+        collect($setting)->each(fn($content) => Setting::firstOrCreate(['name' => $content['name']], $content));
+        collect($image)->each(fn($content) => Image::firstOrCreate(['key' => $content['key']], $content));
+        collect($navbar)->each(fn($content) => Navbar::firstOrCreate(['key' => $content['key']], $content));
     }
 }
