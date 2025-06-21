@@ -29,7 +29,7 @@ with(fn() => [
 $submit = function () {
     $this->validate();
 
-    Mail::to(env('ADMIN_MAIL'))->send(new FooterForm($this->name, $this->email, $this->message));
+    Setting::where('name', 'email')->first()->value && Mail::to(Setting::where('name', 'email')->first()->value)->send(new FooterForm($this->name, $this->email, $this->message));
     $this->reset();
     $this->showThankYouMessage = true;
 };
