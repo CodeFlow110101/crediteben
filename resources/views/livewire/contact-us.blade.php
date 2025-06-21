@@ -32,7 +32,7 @@ $submit = function () {
     $this->validate();
 
     Setting::where('name', 'email')->first()->value && Mail::to(Setting::where('name', 'email')->first()->value)->send(new ContactForm($this->first_name, $this->last_name, $this->phone_no, $this->email, $this->company_name, $this->job_title, $this->subject, $this->message));
-    $this->reset();
+    $this->reset(['first_name', 'last_name', 'phone_no', 'email', 'company_name', 'job_title', 'subject', 'message', 'showThankYouMessage']);
     $this->showThankYouMessage = true;
 }
 

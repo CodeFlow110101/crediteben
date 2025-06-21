@@ -30,7 +30,7 @@ $submit = function () {
     $this->validate();
 
     Setting::where('name', 'email')->first()->value && Mail::to(Setting::where('name', 'email')->first()->value)->send(new FooterForm($this->name, $this->email, $this->message));
-    $this->reset();
+    $this->reset(['name', 'email', 'message', 'showThankYouMessage']);
     $this->showThankYouMessage = true;
 };
 
