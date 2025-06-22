@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 
 class NavbarResource extends Resource
 {
@@ -27,14 +28,8 @@ class NavbarResource extends Resource
     {
         return $form
             ->schema([
-                RichEditor::make('en')->label('English')
-                    ->toolbarButtons([
-                        'bold',
-                    ]),
-                RichEditor::make('fr')->label('French')
-                    ->toolbarButtons([
-                        'bold',
-                    ])
+                TextInput::make('en')->label('English'),
+                TextInput::make('fr')->label('French'),
             ]);
     }
 
