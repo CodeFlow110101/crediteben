@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\App;
 state(['name', 'email', 'message', 'showThankYouMessage']);
 state('isfrench')->reactive();
 
-rules(['name' => 'required', 'email' => 'required|email', 'message' => 'required']);
+rules(['name' => 'required', 'email' => 'required|email:rfc,dns', 'message' => 'required']);
 
 with(fn() => [
     'footer' => Footer::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
@@ -50,25 +50,25 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                         <div class="max-xl:text-sm font-light">{!! $footer['form-subheading'] !!}</div>
                     </div>
                     <div>
-                        <input wire:model="name" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2 " placeholder="Name">
+                        <input wire:model="name" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2 " placeholder="{!! Str::of($footer['form-name-placeholder'])->striptags() !!}">
                         @error('name')
                         <div class="text-white text-sm">{{ $message }}</div>
                         @enderror
                     </div>
                     <div>
-                        <input wire:model="email" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2 " placeholder="Email">
+                        <input wire:model="email" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2 " placeholder="{!! Str::of($footer['form-email-placeholder'])->striptags() !!}">
                         @error('email')
                         <div class="text-white text-sm">{{ $message }}</div>
                         @enderror
                     </div>
                     <div>
-                        <textarea wire:model="message" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2" rows="5" placeholder="Message"></textarea>
+                        <textarea wire:model="message" class="bg-white/10 w-full placeholder:text-white/50 placeholder:font-light p-2" rows="5" placeholder="{!! Str::of($footer['form-message-placeholder'])->striptags() !!}"></textarea>
                         @error('message')
                         <div class="text-white text-sm">{{ $message }}</div>
                         @enderror
                     </div>
                     <button wire:loading.class="*:odd:invisible" class="relative flex gap-2 items-center uppercase group font-semibold xl:text-lg tracking-wide text-primary bg-white hover:bg-accent hover:text-white w-min whitespace-nowrap py-3 px-6 rounded-lg *:transition-colors">
-                        <div>Submit message</div>
+                        <div>{!! Str::of($footer['form-submit-button'])->striptags() !!}</div>
                         <div wire:loading.class.remove="invisible" class="absolute invisible inset-0 flex justify-center items-center">
                             <svg aria-hidden="true" class="w-8 h-8 text-white group-hover:text-accent group-hover:fill-white fill-primary animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -92,7 +92,7 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
     <div class="flex flex-col gap-8">
         <div class="w-4/5 mx-auto flex max-xl:flex-col max-xl:gap-12 justify-around">
             <div class="flex flex-col gap-2">
-                <div class="uppercase text-2xl font-semibold">contact</div>
+                <div class="uppercase text-2xl font-semibold">{!! Str::of($footer['contact-heading'])->striptags() !!}</div>
                 <div class="flex gap-2 items-center text-lg">
                     <div>
                         <svg class="size-6 text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                 </div>
             </div>
             <div class="flex flex-col gap-2">
-                <div class="uppercase text-2xl font-semibold">Comapny</div>
+                <div class="uppercase text-2xl font-semibold">{!! Str::of($footer['navigation-heading'])->striptags() !!}</div>
                 <div class="flex flex-col gap-2 *:hover:text-accent *:transition-colors text-lg">
                     <a href="/" wire:navigate>{!! $navbar['home'] !!}</a>
                     <a href="/services" wire:navigate>{!! $navbar['service'] !!}</a>
@@ -145,6 +145,6 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                 </a>
             </div>
         </div>
-        <div class="bg-primary w-full xl:w-4/5 rounded-t-full mx-auto text-center max-xl:text-xs text-white py-2">{!! $footer['copyright-statement'] !!}</div>
+        <div class="bg-primary w-full xl:w-4/5 rounded-t-full mx-auto text-center max-xl:text-xs text-white py-2">{!! Str::of($footer['copyright-statement'])->striptags() !!}</div>
     </div>
 </div>

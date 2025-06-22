@@ -29,7 +29,7 @@ class ImageResource extends Resource
         return $form
             ->schema([
                 TextInput::make('key')->disabled(),
-                FileUpload::make('image')->image()->preserveFilenames()->directory('images')->required(),
+                FileUpload::make('image')->image()->preserveFilenames()->directory('images')->imageEditor()->required(),
             ]);
     }
 

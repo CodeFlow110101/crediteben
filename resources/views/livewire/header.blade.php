@@ -17,8 +17,8 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
 
 ?>
 
-<div class="max-xl:h-28">
-    <div class="max-xl:fixed top-0 z-50 inset-x-0">
+<div class="max-xl:h-28 h-32">
+    <div class="fixed top-0 z-50 inset-x-0">
         <div class="bg-gradient-to-r from-primary to-black from-60% text-white w-full flex justify-center py-2">
             <div class="max-xl:flex-col w-11/12 flex justify-between items-center gap-4">
                 <div class="flex justify-between items-center gap-4">
@@ -53,9 +53,9 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
         </div>
         <div x-data="{ show: false }" class="flex justify-center bg-white py-3">
             <div class="flex justify-between gap-28 items-center w-11/12 relative">
-                <div>
+                <a href="/" wire:navigate>
                     <img class="h-14 w-auto" src="{{ asset('images/logo.png') }}">
-                </div>
+                </a>
                 <div x-cloak :class="show ? 'max-xl:scale-y-100' : 'max-xl:scale-y-0'" class="max-xl:fixed transition-all origin-top inset-x-0 z-50 top-28 max-xl:py-4 bg-white *:bg-white flex max-xl:flex-col flex-1 justify-center *:max-xl:w-11/12 max-xl:*:mx-auto gap-4 xl:gap-14 font-medium text-lg ">
                     <a href="/" wire:navigate>
                         {!! $navbar['home'] !!}

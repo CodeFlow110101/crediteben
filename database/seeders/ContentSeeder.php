@@ -304,6 +304,76 @@ class ContentSeeder extends Seeder
                 "fr" => ""
             ],
             [
+                "key" => "form-first-name-placeholder",
+                "en" => "First Name",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-last-name-placeholder",
+                "en" => "Last Name",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-phone-no-placeholder",
+                "en" => "phone no",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-email-placeholder",
+                "en" => "Email",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-company-name-placeholder",
+                "en" => "Company Name",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-job-title-placeholder",
+                "en" => "Job Title",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-1",
+                "en" => "Which of these best describe you?",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-2",
+                "en" => "My company needs to collect debt",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-3",
+                "en" => "I work at a bank or other financial institution",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-4",
+                "en" => "I work for a telecommunications company",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-5",
+                "en" => "I work for an accounting firm",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-subject-option-6",
+                "en" => "I have a question about my personal debt",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-message-placeholder",
+                "en" => "Tell us about your situation",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-submit-button",
+                "en" => "Send Message",
+                "fr" => ""
+            ],
+            [
                 "key" => "form-after-submit-message",
                 "en" => "Thank you for contacting us, We will be in touch shortly!",
                 "fr" => ""
@@ -358,8 +428,38 @@ class ContentSeeder extends Seeder
                 "fr" => ""
             ],
             [
+                "key" => "form-name-placeholder",
+                "en" => "name",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-email-placeholder",
+                "en" => "email",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-message-placeholder",
+                "en" => "message",
+                "fr" => ""
+            ],
+            [
+                "key" => "form-submit-button",
+                "en" => "Submit Message",
+                "fr" => ""
+            ],
+            [
                 "key" => "form-success-message",
                 "en" => "Thank you for contacting us, We will be in touch shortly!",
+                "fr" => ""
+            ],
+            [
+                "key" => "contact-heading",
+                "en" => "contact",
+                "fr" => ""
+            ],
+            [
+                "key" => "navigation-heading",
+                "en" => "company",
                 "fr" => ""
             ],
             [
