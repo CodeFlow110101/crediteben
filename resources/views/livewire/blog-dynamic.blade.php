@@ -22,7 +22,7 @@ mount(function ($isfrench) {
             <div class="w-11/12 xl:w-4/5 h-[50vh] overflow-clip">
                 <img class="object-center" src="{{ asset('storage/'.$blog->image) }}">
             </div>
-            <div class="font-light">
+            <div class="font-light prose w-full max-w-none">
                 {!! $isfrench ? $blog->description_fr : $blog->description !!}
             </div>
         </div>
