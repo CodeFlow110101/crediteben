@@ -13,5 +13,17 @@
 <body class="font-poppins">
     {{ $slot }}
 </body>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C29RFEXBHC"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-C29RFEXBHC');
+</script>
 
 </html>
