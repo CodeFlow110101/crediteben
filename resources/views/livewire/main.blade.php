@@ -11,9 +11,7 @@ on([
     },
 ]);
 
-mount(function () {
-    $this->path = request()->route()->getName();
-});
+mount(fn() => $this->path = request()->route()->getName());
 ?>
 
 <div>
@@ -28,6 +26,8 @@ mount(function () {
     <livewire:contact-us :isfrench="$isfrench" />
     @elseif($path == 'blog')
     <livewire:blog :isfrench="$isfrench" />
+    @elseif($path == 'career')
+    <livewire:career :isfrench="$isfrench" />
     @elseif($path == 'blog-dynamic')
     <livewire:blog-dynamic :isfrench="$isfrench" />
     @endif

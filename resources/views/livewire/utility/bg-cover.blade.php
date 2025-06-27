@@ -2,6 +2,7 @@
 
 use App\Models\AboutUs;
 use App\Models\BlogPage;
+use App\Models\Career;
 use App\Models\ContactUs;
 use App\Models\Image;
 use App\Models\ServicePage;
@@ -16,11 +17,13 @@ with(fn() => [
     'aboutus' => AboutUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'contactus' => ContactUs::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'service' => ServicePage::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
+    'career' => Career::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'blog' => BlogPage::get()->mapWithKeys(fn($content) => [$content->key => $this->isfrench ? $content->fr : $content->en]),
     'service_cover' => Image::where('key', 'service-cover')->first()->image,
     'about_us_cover' => Image::where('key', 'about-us-cover')->first()->image,
     'contact_us_cover' => Image::where('key', 'contact-us-cover')->first()->image,
     'blog_cover' => Image::where('key', 'blog-cover')->first()->image,
+    'career_cover' => Image::where('key', 'career-cover')->first()->image,
 ]);
 
 
@@ -40,6 +43,8 @@ mount(function ($isfrench) {
     <img class="object-cover" src="{{ asset('storage/'.$contact_us_cover) }}">
     @elseif($path == 'blog' || $path == 'blog-dynamic')
     <img class="object-cover object-bottom" src="{{ asset('storage/'.$blog_cover) }}">
+    @elseif($path == 'career')
+    <img class="object-cover" src="{{ asset('storage/'.$career_cover) }}">
     @endif
     <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-primary/90 flex flex-col items-center">
         <div class="w-11/12 xl:w-4/5 flex gap-4 py-8 mt-auto">
@@ -54,6 +59,8 @@ mount(function ($isfrench) {
                     {!! $contactus['cover-heading-1'] !!}
                     @elseif($path == 'blog' || $path == 'blog-dynamic')
                     {!! $blog['cover-heading-1'] !!}
+                    @elseif($path == 'career')
+                    {!! $career['cover-heading-1'] !!}
                     @endif
                 </div>
                 <div class="xl:text-xl max-xl:leading-tight font-light">
@@ -65,6 +72,8 @@ mount(function ($isfrench) {
                     {!! $contactus['cover-subheading-1'] !!}
                     @elseif($path == 'blog' || $path == 'blog-dynamic')
                     {!! $blog['cover-subheading-1'] !!}
+                    @elseif($path == 'career')
+                    {!! $career['cover-subheading-1'] !!}
                     @endif
                 </div>
             </div>
@@ -79,6 +88,8 @@ mount(function ($isfrench) {
                 {!! $contactus['cover-breadcrumb-1'] !!}
                 @elseif($path == 'blog' || $path == 'blog-dynamic')
                 {!! $blog['cover-breadcrumb-1'] !!}
+                @elseif($path == 'career')
+                {!! $career['cover-breadcrumb-1'] !!}
                 @endif
             </div>
         </div>

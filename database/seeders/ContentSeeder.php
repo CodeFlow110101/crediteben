@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AboutUs;
 use App\Models\BlogPage;
+use App\Models\Career;
 use App\Models\ContactUs;
 use App\Models\Footer;
 use App\Models\Home;
@@ -272,6 +273,34 @@ class ContentSeeder extends Seeder
             ],
         ];
 
+        $career = [
+            [
+                "key" => "cover-heading-1",
+                "en" => "career",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-subheading-1",
+                "en" => "We would love to hear from you.",
+                "fr" => ""
+            ],
+            [
+                "key" => "cover-breadcrumb-1",
+                "en" => "career",
+                "fr" => ""
+            ],
+            [
+                "key" => "heading",
+                "en" => "Job",
+                "fr" => ""
+            ],
+            [
+                "key" => "description",
+                "en" => "description",
+                "fr" => ""
+            ],
+        ];
+
         $contactus = [
             [
                 "key" => "cover-heading-1",
@@ -533,6 +562,10 @@ class ContentSeeder extends Seeder
                 "key" => "footer-image-1",
                 "image" => "",
             ],
+            [
+                "key" => "career-cover",
+                "image" => "",
+            ],
         ];
 
         $navbar = [
@@ -557,6 +590,11 @@ class ContentSeeder extends Seeder
                 "fr" => ""
             ],
             [
+                "key" => "career",
+                "en" => "career",
+                "fr" => ""
+            ],
+            [
                 "key" => "contact",
                 "en" => "get started",
                 "fr" => ""
@@ -566,6 +604,7 @@ class ContentSeeder extends Seeder
         collect($home)->each(fn($content) => Home::firstOrCreate(['key' => $content['key']], $content));
         collect($aboutus)->each(fn($content) => AboutUs::firstOrCreate(['key' => $content['key']], $content));
         collect($contactus)->each(fn($content) => ContactUs::firstOrCreate(['key' => $content['key']], $content));
+        collect($career)->each(fn($content) => Career::firstOrCreate(['key' => $content['key']], $content));
         collect($service)->each(fn($content) => ServicePage::firstOrCreate(['key' => $content['key']], $content));
         collect($blog)->each(fn($content) => BlogPage::firstOrCreate(['key' => $content['key']], $content));
         collect($footer)->each(fn($content) => Footer::firstOrCreate(['key' => $content['key']], $content));

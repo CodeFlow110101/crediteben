@@ -26,7 +26,7 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                     <div class="border-l border-white rounded-full h-1/2"></div>
                     <div wire:click="$dispatch('toggle-language', { value: true })" class="hover:text-accent cursor-pointer">Français</div>
                 </div>
-                <div class="flex justify-end items-center gap-4">
+                <div class="flex justify-end items-center gap-4 max-xl:flex-col">
                     <div class="flex gap-4">
                         <div class="flex gap-2 items-center">
                             <div>
@@ -37,7 +37,7 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                             <div>{{ $email }}</div>
                         </div>
                     </div>
-                    <div class="border-l border-white rounded-full h-1/2"></div>
+                    <div class="border-l border-white rounded-full h-1/2 max-xl:hidden"></div>
                     <div class="flex gap-4">
                         <div class="flex gap-2 items-center">
                             <div>
@@ -68,6 +68,9 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                     </a>
                     <a href="/blog" wire:navigate>
                         {!! $navbar['blog'] !!}
+                    </a>
+                    <a href="/career" wire:navigate>
+                        {!! $navbar['career'] !!}
                     </a>
                 </div>
                 <div class="max-xl:hidden">
