@@ -28,9 +28,9 @@ class JobResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title_en')->required(),
-                Textarea::make('description_en')->required(),
+                RichEditor::make('description_en'),
                 TextInput::make('title_fr')->required(),
-                Textarea::make('description_fr')->required(),
+                RichEditor::make('description_fr'),
             ]);
     }
 

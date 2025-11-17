@@ -30,7 +30,7 @@ mount(fn($isfrench) => $this->isfrench = $isfrench);
                     {{ $isfrench ? $job->title_fr : $job->title_en }}
                 </div>
                 <div class="font-light max-xl:text-sm">
-                    {{ Str::of($isfrench ? $job->description_fr : $job->description_en)->stripTags() }}
+                    {!! Str::of($isfrench ? $job->description_fr : $job->description_en) !!}
                 </div>
             </div>
             @endforeach
